@@ -1,5 +1,7 @@
 package com.kodilla.hibernate.task;
 
+import com.kodilla.hibernate.tasklist.TaskList;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -13,6 +15,8 @@ public final class Task {
     private String description;
     private Date created;
     private int duration;
+    private TaskFinancialDetails taskFinancialDetails;
+    private TaskList taskList;
 //Hibernate podczas odtwarzania stanu obiektów (czyli odczytywania ich z bazy danych) używa bezparametrowego konstruktora – dlatego jest on potrzebny w klasie.
     public Task() {
     }
@@ -49,6 +53,26 @@ public final class Task {
     //Jeżeli zdecydowaliśmy się na oznaczanie adnotacjami akcesorów (czyli getterów) zamiast pól, to konieczne jest również utworzenie zestawu setterów.
     private void setId(int id) {
         this.id = id;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "TASKS_FINANCIALS_ID")
+    public TaskFinancialDetails getTaskFinancialDetails() {
+        return taskFinancialDetails;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "TASKLISTS_ID")
+    public TaskList getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
+    }
+
+    public void setTaskFinancialDetails(TaskFinancialDetails taskFinancialDetails) {
+        this.taskFinancialDetails = taskFinancialDetails;
     }
 
     private void setDescription(String description) {
