@@ -1,7 +1,5 @@
 package com.kodilla.hibernate.manytomany;
 
-import com.kodilla.hibernate.task.Task;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -10,8 +8,6 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesByFirstThreeLetters",
-        //query = "FROM COMPANIES WHERE COMPANY_NAME LIKE :THREE_LETTERS",
-        //query = "SELECT LEFT (COMPANY_NAME, 3) AS ExtractString FROM COMPANIES WHERE ExtractString LIKE :THREE_LETTERS",
         query = "SELECT * FROM COMPANIES" + " WHERE LEFT(COMPANY_NAME , 3)=:THREE_LETTERS",
         resultClass = Company.class
 )

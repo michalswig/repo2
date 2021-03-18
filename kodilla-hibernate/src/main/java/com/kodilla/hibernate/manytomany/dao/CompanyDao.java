@@ -5,11 +5,10 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
-//Model zdefiniował jaką strukturę mają nasze dane.
-//Repozytorium będzie definiować jakie operacje możemy wykonać na naszych danych.
 @Transactional
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
