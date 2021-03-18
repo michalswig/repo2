@@ -1,14 +1,18 @@
 package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
+import java.util.List;
 
 //Model zdefiniował jaką strukturę mają nasze dane.
 //Repozytorium będzie definiować jakie operacje możemy wykonać na naszych danych.
 @Transactional
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
-
+    @Query
+    List<Company> retrieveCompaniesByFirstThreeLetters(@Param("THREE_LETTERS") String threeLetters);
 }
