@@ -10,8 +10,9 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesByFirstThreeLetters",
-        query = "FROM COMPANIES WHERE COMPANY_NAME LIKE :THREE_LETTERS",
-        //SQL, LIKE - cokolwiek wpiszesz to sprawdzi, trzeba inną metodę, np left?
+        //query = "FROM COMPANIES WHERE COMPANY_NAME LIKE :THREE_LETTERS",
+        //query = "SELECT LEFT (COMPANY_NAME, 3) AS ExtractString FROM COMPANIES WHERE ExtractString LIKE :THREE_LETTERS",
+        query = "SELECT * FROM COMPANIES" + " WHERE LEFT(COMPANY_NAME , 3)=:THREE_LETTERS",
         resultClass = Company.class
 )
 @Entity

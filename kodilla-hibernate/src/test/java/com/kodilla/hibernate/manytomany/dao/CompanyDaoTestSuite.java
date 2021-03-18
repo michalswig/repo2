@@ -56,14 +56,9 @@ class CompanyDaoTestSuite {
         assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        try {
-            employeeDao.deleteAll();
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
+
     }
 
     @Test
@@ -92,12 +87,9 @@ class CompanyDaoTestSuite {
         assertEquals(1, companiesByFirstThreeLetters.size());
 
         //CleanUp
-        try {
-            employeeDao.deleteAll();
-            companyDao.deleteAll();
-        } catch (Exception e) {
-            //do nothing
-        }
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
+
     }
 
 
