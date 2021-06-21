@@ -60,7 +60,7 @@ class ShopServiceTestSuite {
                 System.out.println("Order is cancelled");
             }
         } else {
-            System.out.println("Access denied. User is not authenticated.");
+            System.out.println("Access denied. UserTaskQueue is not authenticated.");
         }
     }
 
